@@ -1,0 +1,486 @@
+/* ================================================================= */
+/*                         GLOBAL & HERO                             */
+/* ================================================================= */
+
+.hero {
+    height: 100vh;
+    background: url('../images/peinadoscristy.png') center / cover no-repeat;
+    position: relative;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.45);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    animation: fadeIn 1.5s ease;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================================================= */
+/*                  BOTÓN ADMIN FLOTANTE                             */
+/* ================================================================= */
+
+.admin-turnos-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1px solid #e8b4bc;
+    background: #fff;
+    color: #a34c66;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    transition: .2s;
+}
+
+.admin-turnos-btn:hover {
+    background: #fdecef;
+    color: #8d314a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(232,180,188,0.7);
+}
+
+/* ================================================================= */
+/*                     MIMONAILS SECTION                             */
+/* ================================================================= */
+
+.mimo-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #ffeef4, #fff8fa);
+    display: flex;
+    justify-content: center;
+}
+
+.mimo-wrapper {
+    width: 90%;
+    max-width: 1300px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 50px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.mimo-info {
+    flex: 1;
+}
+
+.mimo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: #c25a7c;
+    margin-bottom: 10px;
+}
+
+.mimo-desc {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.mimo-carousel {
+    flex: 1;
+    position: relative;
+    height: 380px;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.mimo-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .8s ease-in-out;
+}
+
+.mimo-img.active {
+    opacity: 1;
+}
+
+/* ================================================================= */
+/*                           SERVICIOS                               */
+/* ================================================================= */
+
+.services {
+    padding: 80px 10%;
+    text-align: center;
+    background: #faf7f5;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    background: #fff;
+    padding: 35px;
+    width: 280px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    transition: .35s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+
+
+
+/* ================================================================= */
+/*                   MARCAS PROFESIONALES (LOGOS)                    */
+/* ================================================================= */
+
+.brands-section {
+    padding: 100 10% 80px;
+    background: #fff8fb;
+    text-align: center;
+}
+
+.brands-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #b66b85;
+}
+
+/* Contenedor de logos */
+.brands-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.brand img {
+    height: 55px;
+    max-width: 150px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.brand img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-4px);
+}
+
+/* ================================================================= */
+/*                        CONTACT / MAPA                             */
+/* ================================================================= */
+
+.contact-section {
+    padding: 80px 10%;
+    background: #ffeef4;
+}
+
+.contact-title {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #c25a7c;
+}
+
+.contact-wrapper {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 280px;
+    font-size: 1.1rem;
+}
+
+.contact-info p {
+    margin-bottom: 14px;
+}
+
+.contact-info a {
+    color: #c25a7c;
+    font-weight: 500;
+}
+
+.contact-map {
+    flex: 1;
+    min-width: 320px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* ================================================================= */
+/*                              FOOTER                               */
+/* ================================================================= */
+
+.footer {
+    background: #1f1f1f;
+    color: #ddd;
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.footer p {
+    color: #aaa;
+    font-size: .9rem;
+}
+/* ====================== */
+/*       STORE SECTION    */
+/* ====================== */
+
+.store-section {
+    padding: 80px 10%;
+    text-align: center;
+    background: #fff7fb;
+}
+
+.store-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.7rem;
+    margin-bottom: 10px;
+    color: #b35b78;
+}
+
+.store-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+/* PRODUCT GRID */
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 45px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.07);
+    transition: .35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.1);
+}
+
+/* IMAGEN */
+.product-img {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* TEXTOS */
+.product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.product-desc {
+    font-size: .95rem;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+/* BOTÓN */
+.product-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #e7b5c4, #d89baa);
+    color: white;
+    font-size: .9rem;
+    transition: .3s ease;
+}
+
+.product-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(216,155,170,.4);
+}
+
+/* ====================== */
+/*   VIDEO PREMIUM NEÓN   */
+/* ====================== */
+
+.video-section {
+    margin-top: 140px; /* separación desde MARCAS */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CONTENEDOR GENERAL (más chico, centrado) */
+.video-led-wrapper {
+    width: 78%;                    /* más chico para que no se estire */
+    max-width: 1050px;
+    padding: 5px;                  /* borde finito */
+    border-radius: 28px;
+
+    /* BORDE NEÓN */
+    background: linear-gradient(
+        120deg,
+        #ff00dd,
+        #ff42e6,
+        #c000ff,
+        #ff00dd
+    );
+    background-size: 300% 300%;
+    animation: neonFlow 7s ease infinite;
+
+    /* Glow exterior */
+    box-shadow:
+        0 0 15px rgba(255, 0, 200, 0.45),
+        0 0 35px rgba(255, 0, 200, 0.25);
+}
+
+/* ANIMACIÓN LED NEÓN */
+@keyframes neonFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* CONTENEDOR INTERNO (efecto flotante) */
+.video-led-inner {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(20, 20, 20, 0.45);
+    backdrop-filter: blur(5px);
+
+    box-shadow:
+        0 12px 35px rgba(255, 0, 190, 0.28),
+        0 10px 20px rgba(0, 0, 0, 0.55);
+
+    transform: translateY(0);
+    transition: transform .35s ease;
+}
+
+/* flotación */
+.video-led-inner:hover {
+    transform: translateY(-8px);
+}
+
+/* VIDEO */
+.video-led-inner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* fuerza máxima nitidez ─ evita blur por escalado */
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    filter: contrast(105%) saturate(110%);
+}
+
+/* OVERLAY SUPERIOR */
+.video-overlay-content {
+    position: absolute;
+    z-index: 20;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    width: 90%;
+}
+
+.video-overlay-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 12px;
+    text-shadow: 0 0 12px rgba(0,0,0,0.8);
+}
+
+.video-overlay-content p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 28px;
+}
+
+/* BOTÓN */
+.video-overlay-content .btn-primary {
+    padding: 12px 40px;
+    border-radius: 40px;
+    font-size: 1rem;
+
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(6px);
+    transition: .3s ease;
+}
+
+.video-overlay-content .btn-primary:hover {
+    background: white;
+    color: #111;
+    box-shadow: 0 0 22px rgba(255, 0, 200, 0.55);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .video-led-wrapper {
+        width: 92%;
+    }
+
+    .video-overlay-content h2 {
+        font-size: 2rem;
+    }
+
+    .video-overlay-content p {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Turnos (Admin) | Peinados Cristy</title>
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/reservar.css">
+    <link rel="stylesheet" href="/css/admin-turnos.css">
+</head>
+
+<body class="reservar-body">
+
+<div class="reservar-container">
+
+    <!-- volver -->
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <header class="reservar-header centrado">
+        <h1>Gestión de Turnos</h1>
+        <p>Administrá, cancelá o eliminá turnos registrados.</p>
+    </header>
+
+    <!-- BOTONES DE FILTRO -->
+    <div class="admin-tabs">
+        <a href="/admin/turnos" 
+           class="admin-tab"
+           th:classappend="${vista == 'activos'} ? ' active' : ''">
+            Activos
+        </a>
+
+        <a href="/admin/turnos/cancelados" 
+           class="admin-tab"
+           th:classappend="${vista == 'cancelados'} ? ' active' : ''">
+            Cancelados
+        </a>
+
+        <a href="/admin/turnos/unias"
+           class="admin-tab"
+           th:classappend="${vista == 'unias'} ? ' active' : ''">
+            Turnos de Uñas
+        </a>
+        <!-- BOTON CERRAR SESIÓN  -->
+<div class="logout-wrapper">
+    <form action="/logout" method="post">
+        <button type="submit" class="logout-btn">Cerrar sesión</button>
+    </form>
+</div>
+
+    </div>
+
+    <!-- LISTADO -->
+    <section class="bloque">
+        <h2 th:text="${titulo}">Listado</h2>
+
+        <div class="tabla-wrapper">
+            <table class="turnos-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Servicio</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="turno : ${turnos}">
+                    <td th:text="${turno.id}"></td>
+                    <td th:text="${turno.nombreCliente}"></td>
+                    <td th:text="${turno.telefono}"></td>
+                    <td th:text="${turno.servicio}"></td>
+                    <td th:text="${turno.fecha}"></td>
+                    <td th:text="${turno.horaInicio}"></td>
+                    <td th:text="${turno.estado}"></td>
+
+                    <td class="acciones-tabla">
+
+                        <!-- cancelar -->
+                        <form th:if="${vista == 'activos'}"
+                              th:action="@{|/admin/turnos/${turno.id}/cancelar|}" method="post">
+                            <button type="submit" class="btn-tabla btn-cancelar">Cancelar</button>
+                        </form>
+
+                        <!-- eliminar -->
+                        <form th:action="@{|/admin/turnos/${turno.id}/eliminar|}" method="post">
+                            <button type="submit" class="btn-tabla btn-eliminar">Eliminar</button>
+                        </form>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p th:if="${#lists.isEmpty(turnos)}" class="sin-turnos">
+                No hay turnos para mostrar.
+            </p>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

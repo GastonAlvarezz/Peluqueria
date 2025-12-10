@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservar uñas | MimoNails</title>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/reservar.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="reservar-body">
+
+<div class="reservar-container">
+
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <header class="reservar-header centrado">
+        <h1>MimoNails · Reservar turno</h1>
+        <p>Elegí el servicio, fecha y horario para vos y tus acompañantes.</p>
+    </header>
+
+    <form class="reservar-form" th:action="@{/reservar-unias}" method="post">
+
+        <!-- Cantidad de personas -->
+        <section class="bloque">
+            <h2>Cantidad de personas</h2>
+            <div class="opciones-bloques">
+                <label class="opcion-bloque">
+                    <input type="radio" name="cantidadPersonas" value="1" checked>
+                    <span>1 persona</span>
+                </label>
+                <label class="opcion-bloque">
+                    <input type="radio" name="cantidadPersonas" value="2">
+                    <span>2 personas</span>
+                </label>
+                <label class="opcion-bloque">
+                    <input type="radio" name="cantidadPersonas" value="3">
+                    <span>3 personas</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- Datos contacto -->
+        <section class="bloque">
+            <h2>Datos de contacto</h2>
+            <div class="grid-2">
+                <div class="campo">
+                    <label>Nombre y apellido</label>
+                    <input type="text" name="nombreCliente" required>
+                </div>
+                <div class="campo">
+                    <label>Teléfono (WhatsApp)</label>
+                    <input type="tel" name="telefono" required>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fecha -->
+        <section class="bloque">
+            <h2>Fecha del turno</h2>
+            <div class="grid-2">
+                <div class="campo">
+                    <label>Fecha</label>
+                    <div class="date-wrapper">
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                    <small class="ayuda-fecha">Trabajamos de martes a sábado.</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Persona 1 -->
+        <section class="bloque persona-bloque" id="persona1">
+            <h2>Persona 1</h2>
+
+            <div class="grid-2">
+                <div class="campo">
+                    <label>Servicio</label>
+                    <select name="servicio1" id="servicio1" required>
+                        <option value="" disabled selected>Seleccioná...</option>
+                        <option th:each="s : ${serviciosUnia}"
+                                th:value="${s.name()}"
+                                th:text="${s.descripcion}"></option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Horario</label>
+                    <select name="hora1" id="hora1" required>
+                        <option value="" disabled selected>Elegí fecha primero</option>
+                    </select>
+                </div>
+            </div>
+
+            <p class="precio-persona">
+                Precio estimado Persona 1:
+                <strong id="precio1">$0</strong>
+            </p>
+        </section>
+
+        <!-- Persona 2 -->
+        <section class="bloque persona-bloque" id="persona2" style="display:none;">
+            <h2>Persona 2</h2>
+
+            <div class="grid-2">
+                <div class="campo">
+                    <label>Servicio</label>
+                    <select name="servicio2" id="servicio2">
+                        <option value="" disabled selected>Seleccioná...</option>
+                        <option th:each="s : ${serviciosUnia}"
+                                th:value="${s.name()}"
+                                th:text="${s.descripcion}"></option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Horario</label>
+                    <select name="hora2" id="hora2">
+                        <option value="" disabled selected>Elegí fecha primero</option>
+                    </select>
+                </div>
+            </div>
+
+            <p class="precio-persona">
+                Precio estimado Persona 2:
+                <strong id="precio2">$0</strong>
+            </p>
+        </section>
+
+        <!-- Persona 3 -->
+        <section class="bloque persona-bloque" id="persona3" style="display:none;">
+            <h2>Persona 3</h2>
+
+            <div class="grid-2">
+                <div class="campo">
+                    <label>Servicio</label>
+                    <select name="servicio3" id="servicio3">
+                        <option value="" disabled selected>Seleccioná...</option>
+                        <option th:each="s : ${serviciosUnia}"
+                                th:value="${s.name()}"
+                                th:text="${s.descripcion}"></option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Horario</label>
+                    <select name="hora3" id="hora3">
+                        <option value="" disabled selected>Elegí fecha primero</option>
+                    </select>
+                </div>
+            </div>
+
+            <p class="precio-persona">
+                Precio estimado Persona 3:
+                <strong id="precio3">$0</strong>
+            </p>
+        </section>
+
+        <!-- Total -->
+        <section class="bloque">
+            <h2>Resumen estimado</h2>
+            <div class="precio-box">
+                <p>Total estimado del grupo</p>
+                <h3 id="precioTotal">$0</h3>
+                <small id="detalle-precios"></small>
+            </div>
+        </section>
+
+        <div class="acciones">
+            <button type="submit" class="btn-primary grande">Confirmar turno (Uñas)</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    const fechaInput = document.getElementById('fecha');
+    const radiosCant = document.querySelectorAll('input[name="cantidadPersonas"]');
+
+    const persona2 = document.getElementById('persona2');
+    const persona3 = document.getElementById('persona3');
+
+    const hora1 = document.getElementById('hora1');
+    const hora2 = document.getElementById('hora2');
+    const hora3 = document.getElementById('hora3');
+
+    const selectServicio1 = document.getElementById('servicio1');
+    const selectServicio2 = document.getElementById('servicio2');
+    const selectServicio3 = document.getElementById('servicio3');
+
+    const precio1Label = document.getElementById('precio1');
+    const precio2Label = document.getElementById('precio2');
+    const precio3Label = document.getElementById('precio3');
+    const precioTotalLabel = document.getElementById('precioTotal');
+    const detallePrecios = document.getElementById('detalle-precios');
+
+    const hoy = new Date().toISOString().split("T")[0];
+    fechaInput.setAttribute("min", hoy);
+
+  
+    const precios = {
+        "SEMI_PERMANENTE": 14000,
+        "SOFT_GEL": 18000,
+        "CAPPING": 16000,
+        "ESCULPIDA": 19000,
+        "ESMALTADO": 8000,
+        "RETIRADO": 10000
+    };
+
+    function getCantidadPersonas() {
+        const r = document.querySelector('input[name="cantidadPersonas"]:checked');
+        return r ? parseInt(r.value) : 1;
+    }
+
+    function actualizarBloquesPersonas() {
+        const cant = getCantidadPersonas();
+        persona2.style.display = cant >= 2 ? 'block' : 'none';
+        persona3.style.display = cant >= 3 ? 'block' : 'none';
+
+        if (cant < 2) precio2Label.textContent = "$0";
+        if (cant < 3) precio3Label.textContent = "$0";
+
+        calcularPrecios();
+    }
+
+    async function cargarHorarios() {
+        const fecha = fechaInput.value;
+
+        [hora1, hora2, hora3].forEach(select => {
+            select.innerHTML = "";
+        });
+
+        if (!fecha) {
+            const opt = document.createElement("option");
+            opt.text = "Elegí fecha primero";
+            opt.disabled = true;
+            opt.selected = true;
+            hora1.add(opt.cloneNode(true));
+            hora2.add(opt.cloneNode(true));
+            hora3.add(opt.cloneNode(true));
+            return;
+        }
+
+        try {
+            const resp = await fetch(`/api/turnos-unias/horarios?fecha=${fecha}`);
+            const data = await resp.json();
+
+            if (data.length === 0) {
+                const opt = document.createElement("option");
+                opt.text = "Sin horarios disponibles";
+                opt.disabled = true;
+                opt.selected = true;
+                hora1.add(opt.cloneNode(true));
+                hora2.add(opt.cloneNode(true));
+                hora3.add(opt.cloneNode(true));
+                return;
+            }
+
+            data.forEach(h => {
+                const opt = document.createElement("option");
+                opt.value = h;
+                opt.text = h.substring(0,5) + " hs";
+
+                hora1.add(opt.cloneNode(true));
+                hora2.add(opt.cloneNode(true));
+                hora3.add(opt.cloneNode(true));
+            });
+
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    function calcularPrecios() {
+        const s1 = selectServicio1.value;
+        const s2 = selectServicio2.value;
+        const s3 = selectServicio3.value;
+        const cant = getCantidadPersonas();
+
+        let p1 = precios[s1] || 0;
+        let p2 = (cant >= 2 && s2) ? (precios[s2] || 0) : 0;
+        let p3 = (cant >= 3 && s3) ? (precios[s3] || 0) : 0;
+
+        precio1Label.textContent = "$" + p1.toLocaleString("es-AR");
+        precio2Label.textContent = "$" + p2.toLocaleString("es-AR");
+        precio3Label.textContent = "$" + p3.toLocaleString("es-AR");
+
+        let total = p1 + p2 + p3;
+        precioTotalLabel.textContent = "$" + total.toLocaleString("es-AR");
+
+        let detalle = `P1: $${p1.toLocaleString("es-AR")}`;
+        if (cant >= 2) detalle += ` | P2: $${p2.toLocaleString("es-AR")}`;
+        if (cant >= 3) detalle += ` | P3: $${p3.toLocaleString("es-AR")}`;
+        detallePrecios.textContent = detalle;
+    }
+
+    // Eventos
+    radiosCant.forEach(r => r.addEventListener('change', actualizarBloquesPersonas));
+    fechaInput.addEventListener('change', cargarHorarios);
+
+    [selectServicio1, selectServicio2, selectServicio3].forEach(sel =>
+        sel.addEventListener('change', calcularPrecios)
+    );
+</script>
+
+</body>
+</html>

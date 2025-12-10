@@ -1,0 +1,222 @@
+.reservar-body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f6e7ea, #fdfbfb);
+    display: flex;
+    justify-content: center;
+    padding: 40px 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.reservar-container {
+    max-width: 900px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+.reservar-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+.reservar-header p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+/* Bloques */
+.bloque {
+    margin-bottom: 30px;
+}
+
+.bloque h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* Grid */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Campos */
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+/* Bloques de selección */
+.sub-bloque h3 {
+    margin-bottom: 10px;
+}
+
+.opciones-bloques {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.opcion-bloque {
+    flex: 1 1 140px;
+    max-width: 200px;
+    min-height: 60px;
+    border-radius: 16px;
+    border: 1px solid #e0d0d3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: #faf7f7;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.opcion-bloque input {
+    display: none;
+}
+
+.opcion-bloque span {
+    padding: 0 6px;
+}
+
+/* Estado seleccionado */
+.opcion-bloque input:checked + span,
+.opcion-bloque:hover span {
+    font-weight: 500;
+}
+
+.opcion-bloque input:checked ~ span,
+.opcion-bloque:has(input:checked) {
+    border-color: #e8b4bc;
+    background: #fceff1;
+    box-shadow: 0 8px 20px rgba(232, 180, 188, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Precio */
+.precio-box {
+    background: #faf2f4;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+}
+
+.precio-box p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.precio-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.precio-box small {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Mensaje horarios */
+#mensaje-horarios {
+    font-size: 0.85rem;
+    color: #a33b4b;
+}
+
+/* Botón grande */
+.acciones {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-primary.grande {
+    font-size: 1.05rem;
+    padding: 14px 40px;
+}
+.back-link {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #a34c66;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* centrar header en la de confirmación */
+.reservar-header.centrado {
+    text-align: center;
+}
+
+/* calendario envuelto para que se vea más bonito */
+.date-wrapper {
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 4px 10px;
+    background: #fff;
+}
+
+.date-wrapper input[type="date"] {
+    border: none;
+    width: 100%;
+    padding: 8px 0;
+    font-size: 1rem;
+    background: transparent;
+    outline: none;
+}
+
+.ayuda-fecha {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* resumen de turno */
+.resumen-turno p {
+    margin-bottom: 6px;
+}
+
+.precio-resumen {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* botón secundario */
+.btn-secundario {
+    text-decoration: none;
+    padding: 10px 26px;
+    border-radius: 30px;
+    border: 1px solid #e8b4bc;
+    background: #fff;
+    color: #a34c66;
+    margin-right: 10px;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-secundario:hover {
+    background: #fdecef;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(232, 180, 188, 0.5);
+}
+

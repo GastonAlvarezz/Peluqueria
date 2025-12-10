@@ -1,0 +1,145 @@
+/* Contenedor de la sección admin (reutiliza .reservar-container) */
+
+.admin-turnos-container {
+    /* si en algún momento querés usar otra clase en vez de reservar-container */
+}
+
+/* Título de bloque */
+.bloque h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Wrapper para que la tabla sea responsive */
+.tabla-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+/* Tabla de turnos */
+.turnos-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.turnos-table thead {
+    background: #fceff1;
+}
+
+.turnos-table th,
+.turnos-table td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #f1e3e6;
+}
+
+.turnos-table th {
+    font-weight: 600;
+    color: #74384a;
+    font-size: 0.9rem;
+}
+
+.turnos-table tbody tr:nth-child(even) {
+    background: #fdf7f8;
+}
+
+.turnos-table tbody tr:hover {
+    background: #fbe9ed;
+}
+
+/* Celda de acciones */
+.acciones-tabla {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Botones de la tabla (estilo suave, similar a btn-secundario) */
+.btn-tabla {
+    border: 1px solid #e8b4bc;
+    background: #ffffff;
+    color: #a34c66;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s, color 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-tabla:hover {
+    background: #fdecef;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(232, 180, 188, 0.6);
+}
+.logout-wrapper {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.logout-btn {
+    background-color: #e57373;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #ef5350;
+}
+
+/* Diferenciamos un poco cancelar vs eliminar */
+.btn-cancelar {
+    border-color: #e8b4bc;
+}
+
+.btn-eliminar {
+    border-color: #d66c7c;
+    color: #d24350;
+}
+
+.btn-eliminar:hover {
+    background: #fbe1e6;
+}
+
+/* Mensaje sin turnos */
+.sin-turnos {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #777;
+    text-align: center;
+}
+.admin-tabs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.admin-tab {
+    padding: 10px 22px;
+    border-radius: 25px;
+    background: #f4e7ea;
+    color: #a34c66;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.admin-tab:hover {
+    background: #f7dfe4;
+    transform: translateY(-2px);
+}
+
+.admin-tab.active {
+    background: #e8b4bc;
+    color: white;
+    box-shadow: 0 5px 15px rgba(232,180,188,0.4);
+}

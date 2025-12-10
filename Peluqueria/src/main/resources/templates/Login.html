@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Peinados Cristy | Login</title>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body class="login-body">
+
+<div class="login-container">
+    <div class="login-card fade-in">
+        <h1>Peinados Cristy</h1>
+        <p class="login-subtitle">Acceso al sistema</p>
+
+        <!-- Mensaje de error si las credenciales son incorrectas -->
+        <p th:if="${param.error}" class="login-error">
+            Usuario o contraseña incorrectos.
+        </p>
+
+        <!--  Mensaje si se cerró sesión -->
+        <p th:if="${param.logout}" class="login-logout">
+            Sesión cerrada correctamente.
+        </p>
+
+        <form th:action="@{/login}" method="post">
+
+            <div class="input-group">
+                <input type="text" name="username" required placeholder=" ">
+                <label>Usuario</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password" required placeholder=" ">
+                <label>Contraseña</label>
+            </div>
+
+            <button type="submit" class="btn-login">Ingresar</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Turno reservado | Peinados Cristy</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/reserva-ok.css}">
+</head>
+<body class="reservar-body">
+
+<div class="reservar-container">
+
+    <header class="reservar-header">
+        <h1>¡Tu turno fue reservado!</h1>
+        <p>Te dejamos el detalle de la reserva.</p>
+    </header>
+
+    <section class="bloque" th:if="${turnosGrupo != null}">
+        <h2>Resumen del turno</h2>
+
+        <p>
+            Día:
+            <strong th:text="${turnosGrupo[0].fecha}"></strong>
+            a las
+            <strong th:text="${#strings.substring(turnosGrupo[0].horaInicio.toString(),0,5)} + ' hs'"></strong>
+        </p>
+
+        <table class="tabla-turnos">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Longitud</th>
+                <th>Tipo de pelo</th>
+                <th>Precio estimado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="t,iter : ${turnosGrupo}">
+                <td th:text="${iter.index + 1}"></td>
+                <td th:text="${t.nombreCliente}"></td>
+                <td th:text="${t.servicio}"></td>
+                <td th:text="${t.longitudPelo}"></td>
+                <td th:text="${t.tipoPelo}"></td>
+                <td th:text="${#numbers.formatDecimal(t.precioEstimado, 0, 'COMMA', 2, 'POINT')}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="total-box">
+            <p>Total estimado del grupo:</p>
+            <h2 th:text="'$ ' + ${#numbers.formatDecimal(totalGrupo, 0, 'COMMA', 2, 'POINT')}"></h2>
+            <small>Los valores son estimados, pueden ajustarse en el salón.</small>
+        </div>
+    </section>
+
+    <div class="acciones">
+        <a href="/" class="btn-primary">Volver al inicio</a>
+        <a href="/reservar" class="btn-secondary">Reservar otro turno</a>
+        <a href="/reservar-unias" class="btn-terciary">Turno para Uñas</a>
+
+    </div>
+</div>
+
+</body>
+</html>

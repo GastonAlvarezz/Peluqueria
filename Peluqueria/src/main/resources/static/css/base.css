@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #faf7f5;
+    min-height: 100vh;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-primary {
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #e8b4bc, #d49aa3);
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(212, 154, 163, 0.4);
+}
+
+/* TÍTULOS */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}

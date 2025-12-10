@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Peinados Cristy</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/home.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Botón flotante Admin -->
+<a href="/admin/turnos" class="admin-turnos-btn">
+    Turnos(Admin)
+</a>
+
+<!-- banner -->
+<header class="hero">
+    <div class="overlay">
+        <h1 class="fade-in">Peinados Cristy</h1>
+        <p class="subtitle fade-in-delay">Belleza & Estilo para cada ocasión</p>
+        <a href="/reservar" class="btn-primary fade-in-delay-2">Reservar Turno</a>
+    </div>
+</header>
+
+
+<!-- ====================== -->
+<!--    SECCIÓN MIMO NAILS -->
+<!-- ====================== -->
+
+<section class="mimo-section">
+    <div class="mimo-wrapper">
+
+        <div class="mimo-info">
+            <h2 class="mimo-title">MimoNails</h2>
+            <p class="mimo-desc">
+                Uñas perfectas, delicadas y con estilo propio.
+                Semi, Soft Gel, Esculpidas y más. 
+                Dale el mimo que tus manos se merecen.
+            </p>
+
+            <a href="/reservar-unias" class="btn-primary mimo-btn">Reservar turno (Uñas)</a>
+        </div>
+
+        <!-- Carrusel -->
+        <div class="mimo-carousel">
+            <img src="/images/mimonails.jpg" class="mimo-img active">
+            <img src="/images/mimonails2.jpg" class="mimo-img">
+            <img src="/images/mimonails3.jpg" class="mimo-img">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ====================== -->
+<!--     SERVICIOS          -->
+<!-- ====================== -->
+
+<section class="services">
+    <h2 class="fade-in">Nuestros Servicios</h2>
+
+    <div class="cards">
+        <div class="card fade-up">
+            <h3>Peluquería</h3>
+            <p>Cortes, color y tratamientos personalizados.</p>
+        </div>
+
+        <div class="card fade-up delay-1">
+            <h3>Manicuría</h3>
+            <p>Uñas clásicas, esculpidas y nail art.</p>
+        </div>
+
+        <div class="card fade-up delay-2">
+            <h3>Eventos & Maquillaje</h3>
+            <p>Peinados y maquillaje profesional.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ====================== -->
+<!--     MARCAS PREMIUM     -->
+<!-- ====================== -->
+
+<section class="brands-section">
+    <h2 class="brands-title">Marcas con las que trabajamos</h2>
+
+    <div class="brands-carousel">
+        <div class="brand"><img src="/images/loreal.png"></div>
+        <div class="brand"><img src="/images/alfaparf.png"></div>
+        <div class="brand"><img src="/images/sillkey.png"></div>
+        <div class="brand"><img src="/images/opi.png"></div>
+        <div class="brand"><img src="/images/revlon.png"></div>
+        <div class="brand"><img src="/images/fidelite.png"></div>
+    </div>
+</section>
+<!-- ====================== -->
+<!--     VIDEO PREMIUM     -->
+<!-- ====================== -->
+<section class="video-section">
+    <div class="video-led-wrapper">
+        <div class="video-led-inner">
+            <video autoplay muted loop playsinline>
+                <source src="/videos/loreal-aceite.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ====================== -->
+<!--        STORE           -->
+<!-- ====================== -->
+
+<section id="productos" class="store-section">
+    <h2 class="store-title">Nuestros Productos Profesionales</h2>
+    <p class="store-subtitle">
+        Elegimos marcas premium para el cuidado de tu cabello.
+    </p>
+
+    <div class="store-grid">
+
+        <!-- PRODUCTO 1 -->
+        <div class="product-card">
+            <img src="/images/products/nutriLoreal.png" class="product-img">
+            <h3 class="product-name">Nutricion Loreal</h3>
+            <p class="product-desc">Regeneración profunda y brillo extremo.</p>
+            <a class="product-btn" target="_blank"
+               href="https://wa.me/5492615112290?text=Hola!%20Quiero%20consultar%20por%20Kérastase%20Chronologiste">
+                Consultar por WhatsApp
+            </a>
+        </div>
+
+        <!-- PRODUCTO 2 -->
+        <div class="product-card">
+            <img src="/images/products/argan.png" class="product-img">
+            <h3 class="product-name">Fidelité Mythical Argán</h3>
+            <p class="product-desc">Nutre, hidrata, da brillo y tiene un efecto anti-frizz en el cabello.</p>
+            <a class="product-btn" target="_blank"
+               href="https://wa.me/5492615112290?text=Hola!%20Quiero%20consultar%20por%20Kérastase%20Densifique">
+                Consultar por WhatsApp
+            </a>
+        </div>
+
+        <!-- PRODUCTO 3 -->
+        <div class="product-card">
+            <img src="/images/products/alfaparfSemiDiLino.png" class="product-img">
+            <h3 class="product-name">Alfaparf Semi di Lino</h3>
+            <p class="product-desc">Nutrición y luminosidad instantánea.</p>
+            <a class="product-btn" target="_blank"
+               href="https://wa.me/5492615112290?text=Hola!%20Quiero%20consultar%20por%20Semi%20di%20Lino">
+                Consultar por WhatsApp
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ====================== -->
+<!--   CONTACTO + WSP + MAPA -->
+<!-- ====================== -->
+
+<section class="contact-section">
+
+    <h2 class="contact-title">Contacto</h2>
+
+    <div class="contact-wrapper">
+
+        <div class="contact-info">
+            <p>📍 <b>Dirección:</b> Burgos 401, Las Heras, Mendoza</p>
+            <p>📱 <b>Whatsapp:</b> 
+                <a href="https://wa.me/5492615112290" target="_blank">Enviar mensaje</a>
+            </p>
+            <p>📷 <b>Instagram:</b> 
+                <a href="https://instagram.com/peluqueria_cristy" target="_blank">@peinadoscristy</a>
+            </p>
+            <p>💅 <b>MimoNails IG:</b>
+                <a href="https://instagram.com/mimonails._" target="_blank">@mimonails</a>
+            </p>
+        </div>
+
+        <!-- Mapa -->
+        <div class="contact-map">
+            <iframe
+                width="100%" height="280" style="border:0; border-radius:15px;"
+                loading="lazy"
+                allowfullscreen
+                src="https://www.google.com/maps?q=Burgos%20401%20Las%20Heras%20Mendoza&output=embed">
+            </iframe>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ====================== -->
+<!--      FOOTER            -->
+<!-- ====================== -->
+
+<footer class="footer">
+    <p>© 2025 Peinados Cristy — Todos los derechos reservados</p>
+</footer>
+
+
+<!-- Scripts -->
+<script src="/js/animations.js"></script>
+
+<script>
+    const images = document.querySelectorAll(".mimo-img");
+    let index = 0;
+
+    function nextImage() {
+        images[index].classList.remove("active");
+        index = (index + 1) % images.length;
+        images[index].classList.add("active");
+    }
+
+    setInterval(nextImage, 3500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservar turno | Peinados Cristy</title>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/reservar.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="reservar-body">
+
+<div class="reservar-container">
+
+    <!-- flechita volver -->
+    <a href="/" class="back-link">← Volver al inicio</a>
+
+    <header class="reservar-header">
+        <h1>Reservar turno</h1>
+        <p>Elegí el servicio, contanos tu tipo de pelo y te mostramos horarios y precio estimado.</p>
+    </header>
+
+    <form class="reservar-form" th:action="@{/reservar}" method="post">
+
+        <!-- Cantidad de personas -->
+        <section class="bloque">
+            <h2>Cantidad de personas</h2>
+            <div class="opciones-bloques">
+                <label class="opcion-bloque">
+                    <input type="radio" name="cantidadPersonas" id="cant1" value="1" checked>
+                    <span>1 persona</span>
+                </label>
+                <label class="opcion-bloque">
+                    <input type="radio" name="cantidadPersonas" id="cant2" value="2">
+                    <span>2 personas</span>
+                </label>
+                <label class="opcion-bloque">
+                    <input type="radio" name="cantidadPersonas" id="cant3" value="3">
+                    <span>3 personas</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- Datos personales (contacto del grupo) -->
+        <section class="bloque">
+            <h2>Datos de contacto</h2>
+            <div class="grid-2">
+                <div class="campo">
+                    <label>Nombre y apellido</label>
+                    <input type="text" name="nombreCliente" required>
+                </div>
+                <div class="campo">
+                    <label>Teléfono (WhatsApp)</label>
+                    <input type="tel" name="telefono" required>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fecha (común al grupo) -->
+        <section class="bloque">
+            <h2>Fecha del turno</h2>
+            <div class="grid-2">
+                <div class="campo">
+                    <label>Fecha</label>
+                    <div class="date-wrapper">
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                    <small class="ayuda-fecha">Recordá: trabajamos de martes a sábado.</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERSONA 1 -->
+        <section class="bloque persona-bloque" id="persona1">
+            <h2>Persona 1</h2>
+
+            <!-- Servicio -->
+            <div class="bloque">
+                <h3>Servicio</h3>
+                <div class="campo">
+                    <label>Servicio</label>
+                    <select name="servicio1" id="servicio1" required>
+                        <option value="" disabled selected>Seleccioná...</option>
+                        <option th:each="s : ${servicios}"
+                                th:value="${s}"
+                                th:text="${s}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ¿También corte? -->
+            <section class="bloque" id="bloque-corte-extra-1" style="display: none;">
+                <h3>Corte junto al servicio</h3>
+                <p class="texto-suave">
+                    Si además se va a cortar, ajustamos el tiempo y el precio estimado.
+                </p>
+                <div class="opciones-bloques">
+                    <label class="opcion-bloque">
+                        <input type="radio" name="incluyeCorte1" value="true">
+                        <span>✂️ Sí, también se corta</span>
+                    </label>
+                    <label class="opcion-bloque">
+                        <input type="radio" name="incluyeCorte1" value="false" checked>
+                        <span>🙅‍♀️ No, solo el servicio elegido</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Pelo -->
+            <section class="bloque">
+                <h3>Su pelo</h3>
+
+                <div class="sub-bloque">
+                    <h4>Longitud</h4>
+                    <div class="opciones-bloques">
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo1" value="CORTO" required>
+                            <span>💇‍♀️ Pelo corto</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo1" value="MEDIO">
+                            <span>💇‍♀️ Pelo medio</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo1" value="LARGO">
+                            <span>💇‍♀️ Pelo largo</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="sub-bloque">
+                    <h4>Tipo de pelo</h4>
+                    <div class="opciones-bloques">
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo1" value="LACIO" required>
+                            <span>➖ Lacio</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo1" value="ONDULADO">
+                            <span>〰️ Ondulado</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo1" value="RIZADO">
+                            <span>➿ Rizado</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo1" value="MUY_ABUNDANTE">
+                            <span>🌿 Muy abundante</span>
+                        </label>
+                    </div>
+                </div>
+
+                <p class="precio-persona">
+                    Precio estimado persona 1:
+                    <strong id="precio-estimado-1">$0</strong>
+                </p>
+            </section>
+        </section>
+
+        <!-- PERSONA 2 -->
+        <section class="bloque persona-bloque" id="persona2" style="display:none;">
+            <h2>Persona 2</h2>
+
+            <div class="bloque">
+                <h3>Servicio</h3>
+                <div class="campo">
+                    <label>Servicio</label>
+                    <select name="servicio2" id="servicio2">
+                        <option value="" disabled selected>Seleccioná...</option>
+                        <option th:each="s : ${servicios}"
+                                th:value="${s}"
+                                th:text="${s}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <section class="bloque" id="bloque-corte-extra-2" style="display: none;">
+                <h3>Corte junto al servicio</h3>
+                <p class="texto-suave">
+                    Si además se va a cortar, ajustamos el tiempo y el precio estimado.
+                </p>
+                <div class="opciones-bloques">
+                    <label class="opcion-bloque">
+                        <input type="radio" name="incluyeCorte2" value="true">
+                        <span>✂️ Sí, también se corta</span>
+                    </label>
+                    <label class="opcion-bloque">
+                        <input type="radio" name="incluyeCorte2" value="false" checked>
+                        <span>🙅‍♀️ No, solo el servicio elegido</span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="bloque">
+                <h3>Su pelo</h3>
+
+                <div class="sub-bloque">
+                    <h4>Longitud</h4>
+                    <div class="opciones-bloques">
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo2" value="CORTO">
+                            <span>💇‍♀️ Pelo corto</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo2" value="MEDIO">
+                            <span>💇‍♀️ Pelo medio</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo2" value="LARGO">
+                            <span>💇‍♀️ Pelo largo</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="sub-bloque">
+                    <h4>Tipo de pelo</h4>
+                    <div class="opciones-bloques">
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo2" value="LACIO">
+                            <span>➖ Lacio</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo2" value="ONDULADO">
+                            <span>〰️ Ondulado</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo2" value="RIZADO">
+                            <span>➿ Rizado</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo2" value="MUY_ABUNDANTE">
+                            <span>🌿 Muy abundante</span>
+                        </label>
+                    </div>
+                </div>
+
+                <p class="precio-persona">
+                    Precio estimado persona 2:
+                    <strong id="precio-estimado-2">$0</strong>
+                </p>
+            </section>
+        </section>
+
+        <!-- PERSONA 3 -->
+        <section class="bloque persona-bloque" id="persona3" style="display:none;">
+            <h2>Persona 3</h2>
+
+            <div class="bloque">
+                <h3>Servicio</h3>
+                <div class="campo">
+                    <label>Servicio</label>
+                    <select name="servicio3" id="servicio3">
+                        <option value="" disabled selected>Seleccioná...</option>
+                        <option th:each="s : ${servicios}"
+                                th:value="${s}"
+                                th:text="${s}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <section class="bloque" id="bloque-corte-extra-3" style="display: none;">
+                <h3>Corte junto al servicio</h3>
+                <p class="texto-suave">
+                    Si además se va a cortar, ajustamos el tiempo y el precio estimado.
+                </p>
+                <div class="opciones-bloques">
+                    <label class="opcion-bloque">
+                        <input type="radio" name="incluyeCorte3" value="true">
+                        <span>✂️ Sí, también se corta</span>
+                    </label>
+                    <label class="opcion-bloque">
+                        <input type="radio" name="incluyeCorte3" value="false" checked>
+                        <span>🙅‍♀️ No, solo el servicio elegido</span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="bloque">
+                <h3>Su pelo</h3>
+
+                <div class="sub-bloque">
+                    <h4>Longitud</h4>
+                    <div class="opciones-bloques">
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo3" value="CORTO">
+                            <span>💇‍♀️ Pelo corto</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo3" value="MEDIO">
+                            <span>💇‍♀️ Pelo medio</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="longitudPelo3" value="LARGO">
+                            <span>💇‍♀️ Pelo largo</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="sub-bloque">
+                    <h4>Tipo de pelo</h4>
+                    <div class="opciones-bloques">
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo3" value="LACIO">
+                            <span>➖ Lacio</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo3" value="ONDULADO">
+                            <span>〰️ Ondulado</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo3" value="RIZADO">
+                            <span>➿ Rizado</span>
+                        </label>
+                        <label class="opcion-bloque">
+                            <input type="radio" name="tipoPelo3" value="MUY_ABUNDANTE">
+                            <span>🌿 Muy abundante</span>
+                        </label>
+                    </div>
+                </div>
+
+                <p class="precio-persona">
+                    Precio estimado persona 3:
+                    <strong id="precio-estimado-3">$0</strong>
+                </p>
+            </section>
+        </section>
+
+        <!-- Horario + PRECIO TOTAL -->
+        <section class="bloque">
+            <h2>Horario y total estimado</h2>
+
+            <div class="grid-2">
+                <div class="campo">
+                    <label>Horario disponible</label>
+                    <select name="hora" id="hora" required>
+                        <option value="" disabled selected>Seleccioná servicio de Persona 1 y fecha</option>
+                    </select>
+                    <small id="mensaje-horarios"></small>
+                </div>
+
+                <div class="precio-box">
+                    <p>Precio estimado total (grupo)</p>
+                    <h3 id="precio-total">$0</h3>
+                    <small>
+                        El valor final puede variar según diagnóstico en salón.<br>
+                        <span id="detalle-precios"></span>
+                    </small>
+                </div>
+            </div>
+        </section>
+
+        <div class="acciones">
+            <button type="submit" class="btn-primary grande">Confirmar turno</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const fechaInput = document.getElementById('fecha');
+    const horaSelect = document.getElementById('hora');
+    const mensajeHorarios = document.getElementById('mensaje-horarios');
+
+    const cantRadios = document.querySelectorAll('input[name="cantidadPersonas"]');
+
+    const servicio1Select = document.getElementById('servicio1');
+    const servicio2Select = document.getElementById('servicio2');
+    const servicio3Select = document.getElementById('servicio3');
+
+    const bloqueCorte1 = document.getElementById('bloque-corte-extra-1');
+    const bloqueCorte2 = document.getElementById('bloque-corte-extra-2');
+    const bloqueCorte3 = document.getElementById('bloque-corte-extra-3');
+
+    const persona2Section = document.getElementById('persona2');
+    const persona3Section = document.getElementById('persona3');
+
+    const precio1Label = document.getElementById('precio-estimado-1');
+    const precio2Label = document.getElementById('precio-estimado-2');
+    const precio3Label = document.getElementById('precio-estimado-3');
+    const precioTotalLabel = document.getElementById('precio-total');
+    const detallePreciosSpan = document.getElementById('detalle-precios');
+
+    // evitar fechas pasadas
+    const hoy = new Date().toISOString().split("T")[0];
+    fechaInput.setAttribute("min", hoy);
+
+    function getCantidadPersonas() {
+        const checked = document.querySelector('input[name="cantidadPersonas"]:checked');
+        return checked ? parseInt(checked.value) : 1;
+    }
+
+    function getSelectedRadio(name) {
+        const r = document.querySelector('input[name="' + name + '"]:checked');
+        return r ? r.value : null;
+    }
+
+    function actualizarVisibilidadCorte(servicioValue, bloqueCorteId) {
+        const bloque = bloqueCorteId;
+        if (servicioValue && servicioValue !== 'CORTE') {
+            bloque.style.display = 'block';
+        } else {
+            bloque.style.display = 'none';
+        }
+    }
+
+    function actualizarVisibilidadPersonas() {
+        const cant = getCantidadPersonas();
+        persona2Section.style.display = cant >= 2 ? 'block' : 'none';
+        persona3Section.style.display = cant >= 3 ? 'block' : 'none';
+
+        // si baja la cantidad, ponemos en $0 las que no van
+        if (cant < 2) {
+            precio2Label.textContent = "$0";
+        }
+        if (cant < 3) {
+            precio3Label.textContent = "$0";
+        }
+
+        calcularPreciosYTotal();
+        cargarHorarios();
+    }
+
+    function calcularPrecioPersona(servicio, longitud, tipo, incluyeCorte) {
+        if (!servicio || !longitud || !tipo) return 0;
+
+     
+        let base = 0;
+        if (servicio === 'CORTE') base = 8000;
+        if (servicio === 'TINTURA') base = 25000;
+        if (servicio === 'MECHAS') base = 65000;
+
+        let extraLongitud = 0;
+        if (longitud === 'MEDIO') extraLongitud = 1000;
+        if (longitud === 'LARGO') extraLongitud = 2000;
+
+        let extraTipo = 0;
+        if (tipo === 'ONDULADO') extraTipo = 1000;
+        if (tipo === 'RIZADO') extraTipo = 2000;
+        if (tipo === 'MUY_ABUNDANTE') extraTipo = 1000;
+
+        let extraCorte = 0;
+        if (incluyeCorte && servicio !== 'CORTE') {
+            extraCorte = 8000;
+        }
+
+        return base + extraLongitud + extraTipo + extraCorte;
+    }
+
+    function calcularPreciosYTotal() {
+        const cant = getCantidadPersonas();
+
+        // Persona 1
+        const s1 = servicio1Select.value;
+        const l1 = getSelectedRadio('longitudPelo1');
+        const t1 = getSelectedRadio('tipoPelo1');
+        const c1 = getSelectedRadio('incluyeCorte1') === 'true';
+
+        const p1 = calcularPrecioPersona(s1, l1, t1, c1);
+        precio1Label.textContent = "$" + p1.toLocaleString("es-AR");
+
+        // Persona 2
+        let p2 = 0;
+        if (cant >= 2) {
+            const s2 = servicio2Select.value;
+            const l2 = getSelectedRadio('longitudPelo2');
+            const t2 = getSelectedRadio('tipoPelo2');
+            const c2 = getSelectedRadio('incluyeCorte2') === 'true';
+            p2 = calcularPrecioPersona(s2, l2, t2, c2);
+        }
+        precio2Label.textContent = "$" + p2.toLocaleString("es-AR");
+
+        // Persona 3
+        let p3 = 0;
+        if (cant >= 3) {
+            const s3 = servicio3Select.value;
+            const l3 = getSelectedRadio('longitudPelo3');
+            const t3 = getSelectedRadio('tipoPelo3');
+            const c3 = getSelectedRadio('incluyeCorte3') === 'true';
+            p3 = calcularPrecioPersona(s3, l3, t3, c3);
+        }
+        precio3Label.textContent = "$" + p3.toLocaleString("es-AR");
+
+        const total = p1 + p2 + p3;
+        precioTotalLabel.textContent = "$" + total.toLocaleString("es-AR");
+
+        // detalle
+        let detalle = `P1: $${p1.toLocaleString("es-AR")}`;
+        if (getCantidadPersonas() >= 2) {
+            detalle += ` | P2: $${p2.toLocaleString("es-AR")}`;
+        }
+        if (getCantidadPersonas() >= 3) {
+            detalle += ` | P3: $${p3.toLocaleString("es-AR")}`;
+        }
+        detallePreciosSpan.textContent = detalle;
+    }
+
+    async function cargarHorarios() {
+        const fecha = fechaInput.value;
+        const servicio = servicio1Select.value;
+        const cant = getCantidadPersonas();
+
+        horaSelect.innerHTML = '';
+        mensajeHorarios.textContent = '';
+
+        if (!servicio || !fecha) {
+            const opt = document.createElement('option');
+            opt.text = 'Seleccioná servicio de Persona 1 y fecha';
+            opt.disabled = true;
+            opt.selected = true;
+            horaSelect.add(opt);
+            return;
+        }
+
+        try {
+            const resp = await fetch(`/api/turnos/horarios?fecha=${fecha}&servicio=${servicio}&cantidadPersonas=${cant}`);
+            const data = await resp.json();
+
+            if (data.length === 0) {
+                const opt = document.createElement('option');
+                opt.text = 'No hay horarios disponibles para esa fecha y grupo';
+                opt.disabled = true;
+                opt.selected = true;
+                horaSelect.add(opt);
+                mensajeHorarios.textContent = 'Elegí otra fecha o reducí la cantidad de personas.';
+                return;
+            }
+
+            data.forEach(h => {
+                const opt = document.createElement('option');
+                opt.value = h;
+                opt.text = h.substring(0, 5) + " hs";
+                horaSelect.add(opt);
+            });
+
+        } catch (e) {
+            console.error(e);
+            const opt = document.createElement('option');
+            opt.text = 'Error cargando horarios';
+            opt.disabled = true;
+            opt.selected = true;
+            horaSelect.add(opt);
+        }
+    }
+
+    // ===== EVENTOS =====
+
+    cantRadios.forEach(r => r.addEventListener('change', actualizarVisibilidadPersonas));
+
+    fechaInput.addEventListener('change', cargarHorarios);
+
+    servicio1Select.addEventListener('change', () => {
+        actualizarVisibilidadCorte(servicio1Select.value, bloqueCorte1);
+        cargarHorarios();
+        calcularPreciosYTotal();
+    });
+    servicio2Select.addEventListener('change', () => {
+        actualizarVisibilidadCorte(servicio2Select.value, bloqueCorte2);
+        calcularPreciosYTotal();
+    });
+    servicio3Select.addEventListener('change', () => {
+        actualizarVisibilidadCorte(servicio3Select.value, bloqueCorte3);
+        calcularPreciosYTotal();
+    });
+
+    document.querySelectorAll('input[name="longitudPelo1"], input[name="tipoPelo1"], input[name="incluyeCorte1"]')
+        .forEach(r => r.addEventListener('change', calcularPreciosYTotal));
+
+    document.querySelectorAll('input[name="longitudPelo2"], input[name="tipoPelo2"], input[name="incluyeCorte2"]')
+        .forEach(r => r.addEventListener('change', calcularPreciosYTotal));
+
+    document.querySelectorAll('input[name="longitudPelo3"], input[name="tipoPelo3"], input[name="incluyeCorte3"]')
+        .forEach(r => r.addEventListener('change', calcularPreciosYTotal));
+
+</script>
+
+</body>
+</html>

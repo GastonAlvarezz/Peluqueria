@@ -1,0 +1,152 @@
+/* ===== Fondo y layout general ===== */
+.reservar-body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f6e7ea, #fdfbfb);
+    display: flex;
+    justify-content: center;
+    padding: 40px 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.reservar-container {
+    max-width: 900px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* ===== Header ===== */
+.reservar-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.reservar-header h1 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+}
+
+.reservar-header p {
+    color: #666;
+    font-size: 1.05rem;
+}
+
+/* ===== Bloques ===== */
+.bloque {
+    margin-bottom: 30px;
+}
+
+.bloque h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* ===== Tabla del turno ===== */
+.tabla-turnos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+}
+
+.tabla-turnos th {
+    background: #f6d8df;
+    color: #7a2f44;
+    padding: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.tabla-turnos td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.tabla-turnos tbody tr:hover {
+    background: #fff7f8;
+}
+
+/* ===== Caja del total ===== */
+.total-box {
+    margin-top: 25px;
+    background: #faf2f4;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(232, 180, 188, 0.25);
+}
+
+.total-box p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.total-box h2 {
+    font-size: 2.2rem;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    color: #a34c66;
+    font-weight: 700;
+}
+
+.total-box small {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+/* ===== Acciones ===== */
+.acciones {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-primary {
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #e8b4bc, #d49aa3);
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(212, 154, 163, 0.4);
+}
+
+/* Botón secundario */
+.btn-secondary {
+    padding: 12px 32px;
+    background: #fdecef;
+    border: 1px solid #e8b4bc;
+    color: #a34c66;
+    border-radius: 30px;
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-4px);
+    background: #fbdce2;
+    box-shadow: 0 10px 25px rgba(232, 180, 188, 0.35);
+}
+
+/* Botón outline */
+.btn-terciary {
+        padding: 12px 32px;
+    background: #fdecef;
+    border: 1px solid #e8b4bc;
+    color: #a34c66;
+    border-radius: 30px;
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+}
